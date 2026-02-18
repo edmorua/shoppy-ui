@@ -7,9 +7,9 @@ export default async function createUser(
 	formData: FormData
 ){
 	const rawFormData = {
-		name: formData.get('name') as string,
-		email: formData.get('email') as string,
-		password: formData.get('password') as string,
+		name: formData.get('name'),
+		email: formData.get('email'),
+		password: formData.get('password'),
 	}
 
 	const response = await fetch(`${API_URL}/users`, {

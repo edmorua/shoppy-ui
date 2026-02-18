@@ -4,8 +4,8 @@ import createUser from "./create-user";
 
 export default function Signup() {
 	return (
-		<form action={createUser}>
-			<Stack spacing={2} className="w-full max-w-xs">
+		<form action={createUser} className="w-full max-w-xs">
+			<Stack spacing={2} >
 				<TextField label="Email" variant="outlined" type="email" name="email" required />
 				<TextField label="Name" variant="outlined" type="text" name="name" required />
 				<TextField label="Password" variant="outlined" type="password" name="password" required />
