@@ -1,18 +1,25 @@
-import { Button, Link, Stack, TextField } from "@mui/material";
+import { Button, Stack, TextField, Typography } from "@mui/material";
 import NextLink from "next/link";
+import createUser from "./create-user";
 
 export default function Signup() {
 	return (
-		<Stack spacing={2} className="w-full max-w-xs">
-			<TextField label="Email" variant="outlined" type="email" />
-			<TextField label="Name" variant="outlined" type="text" />
-			<TextField label="Password" variant="outlined" type="password" />
-			<Button variant="contained" color="primary">Login</Button>
-			<NextLink href="/auth/login" className="self-center">
-				<Link variant="body2" className="self-center">
-					Login
-				</Link>
-			</NextLink>
-		</Stack>
+		<form action={createUser}>
+			<Stack spacing={2} className="w-full max-w-xs">
+				<TextField label="Email" variant="outlined" type="email" name="email" required />
+				<TextField label="Name" variant="outlined" type="text" name="name" required />
+				<TextField label="Password" variant="outlined" type="password" name="password" required />
+				<Button variant="contained" color="primary" type="submit">Sign Up</Button>
+				<NextLink href="/auth/login">
+					<Typography 
+							variant="body2" 
+							color="primary" 
+							className="cursor-pointer" 
+							sx={{ "&:hover": { textDecoration: "underline" } }}
+					>						Already have an account? Login
+					</Typography>
+				</NextLink>
+			</Stack>
+		</form>
 	);
 }
