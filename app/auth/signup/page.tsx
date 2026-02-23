@@ -1,11 +1,15 @@
-import { Button, Stack, TextField, Typography } from "@mui/material";
+"use client";
+import { Alert, Button, Stack, TextField, Typography } from "@mui/material";
 import NextLink from "next/link";
 import createUser from "./create-user";
+import { useActionState } from "react";
 
 export default function Signup() {
+	const [state, formAction] = useActionState(createUser, { error: '' });
 	return (
-		<form action={createUser} className="w-full max-w-xs">
+		<form action={formAction} className="w-full max-w-xs">
 			<Stack spacing={2} >
+				{state.error && <Alert severity="error">{state.error}</Alert>}
 				<TextField label="Email" variant="outlined" type="email" name="email" required />
 				<TextField label="Name" variant="outlined" type="text" name="name" required />
 				<TextField label="Password" variant="outlined" type="password" name="password" required />

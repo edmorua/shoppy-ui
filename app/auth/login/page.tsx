@@ -1,3 +1,5 @@
+"use client";
+
 import { Button, Stack, TextField, Typography } from "@mui/material";
 import NextLink from "next/link";
 import loginUser from "./login-user";

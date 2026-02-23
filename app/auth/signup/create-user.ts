@@ -4,6 +4,7 @@ import { API_URL } from "@/app/constants/api";
 import { redirect } from "next/navigation";
 
 export default async function createUser(
+	prevState: { error: string },
 	formData: FormData
 ){
 	const rawFormData = {
@@ -21,7 +22,7 @@ export default async function createUser(
 	});
 	if (!response.ok) {
 		const error = await response.json();
-		throw new Error(error.message || 'Failed to create user');
+		return { error: error.message || 'Failed to create user' };
 	}
 	redirect('/');
 }
